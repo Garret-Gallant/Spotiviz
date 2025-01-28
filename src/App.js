@@ -29,8 +29,6 @@ function App() {
     setToken(token)
 }, [])
 
-console.log(token)
-
 const logout = () => {
   setToken("")
   window.localStorage.removeItem("token")
@@ -38,7 +36,6 @@ const logout = () => {
 
 useEffect(() => {
   if (!token) return
-
   axios.get("https://api.spotify.com/v1/me", {
       headers: {
           "Authorization": `Bearer ${token}`
@@ -67,10 +64,6 @@ useEffect(() => {
       console.error(error)
   })
 }, [token])
-
-console.log(tracks)
-console.log(profile)
-console.log("Gernelist", genres)
 
 const renderTracks = () => {
   if (!tracks.items) return
